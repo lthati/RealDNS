@@ -8,11 +8,15 @@ import requests
 def get_url_details(domain,headers):
     url = 'https://investigate.api.opendns.com/domains/categorization/' + domain
     response_body = requests.get(url, headers=headers).json()
+    status = response_body[domain]['status']
+    cc = response_body[domain]['content_categories']
+    sc = response_body[domain]['security_categories']
 
-    print response_body[domain]['status']
-    print response_body[domain]['content_categories']
-    print response_body[domain]['security_categories']
+    print status
+    print cc
+    print sc
 
+    return (status, cc, sc)
 if __name__ == '__main__':
     token = os.getenv('INVESTIGATE_TOKEN', False)
     if not token:
