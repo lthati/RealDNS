@@ -3,6 +3,7 @@
 from urllib2 import Request, urlopen
 import os, sys
 import json
+import requests
 
 token = os.getenv('INVESTIGATE_TOKEN', False)
 
@@ -21,24 +22,10 @@ else :
 headers = {
   'Authorization': 'Bearer ' + token
 }
-request = Request('https://investigate.api.opendns.com/domains/categorization/' + domain, headers=headers)
-#request = Request('https://investigate.api.opendns.com/domains/score/' + domain, headers=headers)
-
-response_body = urlopen(request).read()
-
-print response_body
-
-#with open('data.txt', 'w') as outfile:  
-#    json.dump(response_body, outfile)
-#  
-#with open('data.txt', 'r') as outfile:  
-#    data = json.load(outfile)
-#    #print data
-#
+url = 'https://investigate.api.opendns.com/domains/categorization/' + domain
+response_body = requests.get(url, headers=headers).json()
 
 
-
-#for d in data[0]:
-#    print d["status"]
-    
-#print "domains/categorization: " + response_body
+print response_body[domain]['status']
+print response_body[domain]['content_categories']
+print response_body[domain]['security_categories']
