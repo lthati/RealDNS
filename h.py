@@ -5,27 +5,39 @@ import os, sys
 import json
 import requests
 
-token = os.getenv('INVESTIGATE_TOKEN', False)
+def get_url_details(domain,headers):
+    #token = os.getenv('INVESTIGATE_TOKEN', False)
+    #if not token:
+    #    print "ERROR: environment variable \'INVESTIGATE_TOKEN\' not set. Invoke script with \'INVESTIGATE_TOKEN=%YourToken% python scripts.py\'"
+    #    sys.exit(1)
+#
+#    if len(sys.argv) == 2 :
+#        domain = sys.argv[1]
+#    else :
+#        print "Please Enter Domain Name"
+#        sys.exit(1)
 
-if not token:
-  print "ERROR: environment variable \'INVESTIGATE_TOKEN\' not set. Invoke script with \'INVESTIGATE_TOKEN=%YourToken% python scripts.py\'"
-  sys.exit(1)
-
-if len(sys.argv) == 2 :
-    domain = sys.argv[1]
-else :
-    print "Please Enter Domain Name"
-    sys.exit(1)
-
-# domains/categorization
-
-headers = {
-  'Authorization': 'Bearer ' + token
-}
-url = 'https://investigate.api.opendns.com/domains/categorization/' + domain
-response_body = requests.get(url, headers=headers).json()
+    url = 'https://investigate.api.opendns.com/domains/categorization/' + domain
+    response_body = requests.get(url, headers=headers).json()
 
 
-print response_body[domain]['status']
-print response_body[domain]['content_categories']
-print response_body[domain]['security_categories']
+    print response_body[domain]['status']
+    print response_body[domain]['content_categories']
+    print response_body[domain]['security_categories']
+
+if __name__ == '__main__':
+    token = os.getenv('INVESTIGATE_TOKEN', False)
+    if not token:
+        print "ERROR: environment variable \'INVESTIGATE_TOKEN\' not set. Invoke script with \'INVESTIGATE_TOKEN=%YourToken% python scripts.py\'"
+        sys.exit(1)
+
+    headers = {
+        'Authorization': 'Bearer ' + token
+    }
+    if len(sys.argv) == 2 :
+        domain = sys.argv[1]
+        get_url_details(domain,headers)
+    else :
+        print "Please Enter Domain Name"
+        sys.exit(1)
+    
