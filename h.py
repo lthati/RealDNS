@@ -6,20 +6,8 @@ import json
 import requests
 
 def get_url_details(domain,headers):
-    #token = os.getenv('INVESTIGATE_TOKEN', False)
-    #if not token:
-    #    print "ERROR: environment variable \'INVESTIGATE_TOKEN\' not set. Invoke script with \'INVESTIGATE_TOKEN=%YourToken% python scripts.py\'"
-    #    sys.exit(1)
-#
-#    if len(sys.argv) == 2 :
-#        domain = sys.argv[1]
-#    else :
-#        print "Please Enter Domain Name"
-#        sys.exit(1)
-
     url = 'https://investigate.api.opendns.com/domains/categorization/' + domain
     response_body = requests.get(url, headers=headers).json()
-
 
     print response_body[domain]['status']
     print response_body[domain]['content_categories']
