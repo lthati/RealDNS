@@ -31,5 +31,4 @@ if __name__ == '__main__':
         get_url_details(domain,headers)
     else :
         print "Please Enter Domain Name"
-        sys.exit(1)
-    
+        sys.exit(1)    
