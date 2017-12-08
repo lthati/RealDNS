@@ -1,5 +1,6 @@
 import flask
 import query_resolvers
+import urllib
 from flask import Flask
 from flask import request
 app = Flask(__name__)
@@ -12,8 +13,9 @@ def my_webservice():
     print url
     ip_addr = request.args.get('ip_addr')
     print ip_addr
-    print query_resolvers.resolve(url, ip_addr)
-    return 'Success' if query_resolvers.resolve(url, ip_addr) else 'Failed'
+    result = query_resolvers.resolve(url, ip_addr)
+    print "result="+result
+    return result
     #return 'Success'                                                                                                                       
 #return flask.jsonify(result='testing')                                                                                                     
 if __name__=='__main__':

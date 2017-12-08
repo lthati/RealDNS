@@ -14,7 +14,7 @@ var tabs = {};
 worker.onmessage = (e) => {
   let tabId = e.data.tabId;
   // is script injected
-  if (tabs[tabId]) {
+  /*if (tabs[tabId]) {
     chrome.tabs.sendMessage(tabId, {
       cmd: 'flag-resolved',
       ip: e.data.ip,
@@ -25,7 +25,7 @@ worker.onmessage = (e) => {
   }
   else {
     tabs[tabId] = e.data;
-  }
+  }*/
 };
 
 chrome.webRequest.onResponseStarted.addListener(details => {
@@ -178,8 +178,8 @@ function logURL(reqDetails) {
 	var tabId = reqDetails.tabId
 	chrome.tabs.sendMessage(tabId, {
 		cmd: 'flag-resolved',
-		ip: result,
-		//flag: tabs[tabId].country
+		ip: '',
+		flag: result
       });
     }
 }

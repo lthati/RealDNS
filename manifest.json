@@ -1,8 +1,8 @@
 {
-  "name": "Server IP",
-  "short_name": "isip",
-  "description": "Displays server IP address on every website",
-  "author": "Andy Portmen",
+  "name": "RealDNS",
+  "short_name": "RDNS",
+  "description": "The Real DNS Please StandUP!!",
+  "author": "lthati",
   "version": "0.1.0",
   "manifest_version": 2,
   "permissions": [
@@ -18,10 +18,10 @@
   },
   "homepage_url": "http://add0n.com/country-flags.html?from=server-ip",
   "icons": {
-    "16": "data/icons/16.png",
-    "32": "data/icons/32.png",
-    "48": "data/icons/48.png",
-    "128": "data/icons/128.png"
+    "16": "icons/sig.jpg",
+    "32": "icons/sig.jpg",
+    "48": "icons/sig.jpg",
+    "128": "icons/sig.jpg"
   },
   "web_accessible_resources": [
     "data/ip/*"

@@ -12,13 +12,13 @@ chrome.runtime.onMessage.addListener(request => {
     iframe = document.createElement('iframe');
     iframe.setAttribute('src', chrome.runtime.getURL('data/ip/ip.html') + '?ip=' + request.ip + '&flag=' + request.flag);
     iframe.setAttribute('style', `
-      background-color: #fff;
+      background-color: #FFFF;
       position: fixed;
       bottom: 20px;
-      left: 30px;
+      left: 160px;
       z-index: 100000000000;
-      width: 500px;
-      height: 48px;
+      width: 1000px;
+      height: 60px;
       border: solid 1px #ccc;
       box-shadow: 0 0 2px #ccc;
     `);

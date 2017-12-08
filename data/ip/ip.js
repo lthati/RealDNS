@@ -7,7 +7,7 @@ var args = document.location.search.substr(1).split('&').map(str => str.split('=
 
 var a = document.querySelector('a');
 a.textContent = args.ip;
-a.href = 'https://isc.sans.edu/ipinfo.html?ip=' + args.ip;
+a.href = 'https://umbrella.cisco.com';
 if (args.flag) {
   document.querySelector('img').src = './flags/' + args.flag + '.png';
 }
